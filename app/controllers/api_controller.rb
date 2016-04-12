@@ -7,13 +7,12 @@ class ApiController < ApplicationController
 			if params[:lines].size >= inPut
 				for num in (0..inPut-1)
 					operSize = params[:lines][num]
-					if operSize[:instrucciones][1].to_i >= 1 and operSize[:instrucciones][1].to_i <= 1000 #check if it's a rigth size for the array
-						arr = Prueba.new operSize[:instrucciones][0].to_i 
+					if operSize[:instructions][1].to_i >= 1 and operSize[:instructions][1].to_i <= 1000 #check if it's a rigth size for the array
+						arr = Prueba.new operSize[:instructions][0].to_i 
 						tempArray = [] #Array to store the updated blocks
-						for ope in (0..operSize[:instrucciones][1].to_i-1)
+						for ope in (0..operSize[:instructions][1].to_i-1)
 							lec = operSize[:queries][ope] #Read from keyboard the query
 							lec = lec.split(" ") #Separates the query value and the (x,y,z) or (x1,y1,z1,x2,y2,z2) for the block
-							puts lec[0]
 							case lec[0]
 							when "UPDATE"
 							  arr.update(lec[1].to_i,lec[2].to_i,lec[3].to_i,lec[4].to_i)#Call "update"
@@ -33,7 +32,7 @@ class ApiController < ApplicationController
 				end
 			end
 		end
-	render json: @outPut.as_json
+	render json: {resulsts: @outPut.as_json}
 
 	end
 	
