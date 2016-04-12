@@ -7,7 +7,7 @@ class ApiController < ApplicationController
 			if params[:lines].size >= inPut
 				for num in (0..inPut-1)
 					operSize = params[:lines][num]
-					if operSize[1].to_i >= 1 and operSize[1].to_i <= 1000 #check if it's a rigth size for the array
+					if operSize[:instrucciones][1].to_i >= 1 and operSize[:instrucciones][1].to_i <= 1000 #check if it's a rigth size for the array
 						
 					else
 						break
